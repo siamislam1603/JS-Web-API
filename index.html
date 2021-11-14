@@ -7,20 +7,20 @@
     <title>API JSON</title>
   </head>
   <body>
-    <h1>Javascript Object Notaion</h1>
+    <h1>API</h1>
+    <ul id="list-container"></ul>
   </body>
   <script>
-    console.log("Javascript object notation (JSON)");
-    const student = {
-      id: 12,
-      name: "Jamal",
-      favSongs: ["Believer", "Unstoppable", "Hall of Fame"],
-      friends: ["Rashid", "Hasan", "Jalal"],
-    };
-    const studentJSON = JSON.stringify(student); //convert it into json
-    console.log(studentJSON);
-    // {"id":12,"name":"Jamal","favSongs":["Believer","Unstoppable","Hall of Fame"] ,"friends":["Rashid","Hasan","Jalal"]}
-    const JSONToObj = JSON.parse(studentJSON);
-    console.log(JSONToObj);
+      const listContainer=document.getElementById('list-container');
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((json) => {
+          console.log(json);
+          users=json.map(user=>{
+            const li=document.createElement('li');
+            li.innerText=user.username;
+            listContainer.appendChild(li);
+          });
+      });
   </script>
 </html>
