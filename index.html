@@ -17,13 +17,12 @@
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        users = json
-          .map((user) => {
+        users = json.map((user) => {
             const li = document.createElement("li");
             li.innerText = user.username;
             listContainer.appendChild(li);
           })
-          .catch((error) => console.log(error));
-      });
+      })
+      .catch((error) => console.log(error));
   </script>
 </html>
